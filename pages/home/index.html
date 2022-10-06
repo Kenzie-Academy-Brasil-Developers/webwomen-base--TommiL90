@@ -5,6 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/globalStyles.css">
+    <link rel="stylesheet" href="/styles/sizes.css">
+    <link rel="stylesheet" href="/styles/displays.css">
+    <link rel="stylesheet" href="/styles/spaces.css">
+    <link rel="stylesheet" href="/styles/texts.css">
+    <link rel="stylesheet" href="/styles/buttons.css">
+    <link rel="stylesheet" href="/styles/borders.css">
+    <link rel="stylesheet" href="/styles/backgrounds.css">
+
     <link rel="stylesheet" href="index.css">
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <title>Webwomen</title>
@@ -15,9 +23,66 @@
       e ao redor do mundo?"
     />
 </head>
-<body>
-    <main></main>
+<body class="bg-grey-5">
+    <header class="flex justify-center items-center">
+      <section class="container flex flex-col gap-2">
+        <div><img src="/assets/img/logo.svg" alt=""></div>
+        <div class="container flex flex-col gap">
+          <h1 class="text-grey-6">Lugar de mulher é onde ela quiser!</h1>
+          <p class="text-1 text-grey-6">Está procurando oportunidades de estágio, emprego ou bolsas de estudo? </p>
+          <p class="text-1 text-grey-6">Ou até mesmo oportunidades para atender eventos de tecnologia no Brasil e ao redor do mundo? </p>
+          <p class="text-1 text-grey-6"><strong>Confere aqui embaixo o que temos pra você!</strong></p>
+        </div>
+        <button class="button-default-1 text-2">Ir para seção das vagas</button>
+      </section>
+    </header>
+      <div class="container flex justify-between mt-2 container-responsive gap-responsive">
+        <main class="w-section flex flex-col gap-2 content-container-responsive">
+          <h3 class="title-3 text-grey-1">Vagas</h3>
+          <ul id="list-jobs" class="flex flex-col gap">
+          </ul>
+        </main>
+        <aside class="sticky w-section-2 flex flex-col gap-2 content-container-responsive">
+          <h3 class="title-3 text-grey-1">Vagas Seleccionadas</h3>
+          <ul id="list-cards" class="flex flex-col gap">
+            <li class="card w-full flex flex-col gap bg-white p-2 rounded-sm">
+              <p>Você ainda não aplicou para nenhuma vaga</p>
+            </li>
+          </ul>
+        </aside>
+      </div>
+
     <script src="jobsData.js"></script>
     <script src="index.js"></script>
 </body>
 </html>
+
+
+//---> LI1
+<!-- <li class="w-full flex flex-col gap bg-white p-2 rounded-sm">
+  <h4 class="title-4">Pessoa desenvolvedora front-end - React JS</h4>
+  <div class="flex justify-start gap-2">
+    <p class="text-3 text-grey-2">Kenzie Academy</p>
+    <p class="text-3 text-grey-2">Curitiba</p>
+  </div>
+  <p class="text-2 text-grey-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit quas eligendi ullam, animi nihil mollitia beatae temporibus dolor, minima praesentium iure neque maxime consectetur modi, veniam natus sint. Illum, distinctio?</p>
+  <div class="flex justify-between items-center">
+    <p class="text-3 text-grey-2 bg-grey-3 p rounded-sm">Presencial</p>
+    <button class="button-default-2 text-2">Candidatar</button>
+  </div>
+</li> -->
+
+//--> LIaside
+
+<!-- <li class="w-full flex flex-col gap bg-white p-2 rounded-sm">
+  <h4 class="title-4">Pessoa desenvolvedora front-end - React JS</h4>
+  <div class="flex justify-start gap-2">
+    <p class="text-3 text-grey-2">Kenzie Academy</p>
+    <p class="text-3 text-grey-2">Curitiba</p>
+  </div>
+  <p class="text-2 text-grey-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit quas eligendi ullam, animi nihil mollitia beatae temporibus dolor, minima praesentium iure neque maxime consectetur modi, veniam natus sint. Illum, distinctio?</p>
+  <div class="flex justify-between items-center">
+    <p class="text-3 text-grey-2 bg-grey-3 p rounded-sm">Presencial</p>
+    <button class="button-default-2 text-2">Candidatar</button>
+  </div>
+</li> -->

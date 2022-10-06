@@ -1,0 +1,16 @@
+
+.bg-white {
+  background-color: var(--color-grey-6);
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
+.bg-grey-3 {
+  background-color: var(--color-grey-3);
+}
+
+.bg-grey-5 {
+  background-color: var(--color-grey-5);
+}

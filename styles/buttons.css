@@ -1,0 +1,53 @@
+.button-default-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 50px;
+    gap: 10px;
+    width: 296px;
+    height: 48px;
+    background: var(--color-brand-1);
+    border: 2px solid var(--color-brand-1);
+    color: var(--color-grey-6);
+    border-radius: var(--radius-default);
+}
+
+.button-default-1:hover{
+    background: var(--color-brand-2);
+    border: 2px solid var(--color-brand-2);
+}
+
+.button-default-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 50px;
+    gap: 10px;
+    width: max-content;
+    height: 48px;
+    background: var(--color-brand-1);
+    border: 2px solid var(--color-brand-1);
+    color: var(--color-grey-6);
+    border-radius: var(--radius-default);
+}
+
+.button-default-2:hover{
+    background: var(--color-brand-2);
+    border: 2px solid var(--color-brand-2);
+}
+
+.trash{
+    background-image: url(/assets/img/trash.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 28.25px;
+    height: 26px;
+    border: 1.5px solid var(--color-grey-5);
+    border-radius: 8px;
+  }
+  
+  .trash:hover{
+    background-image: url(/assets/img/trash_hover.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }

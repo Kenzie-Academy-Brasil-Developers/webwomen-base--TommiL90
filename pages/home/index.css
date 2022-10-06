@@ -1,1 +1,33 @@
 /* Desenvolva sua estilização aqui... */
+
+header{
+    background-image: url(/assets/img/Pexels\ Photo\ by\ Christina\ Morillo.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    height: 760px;
+    position: relative;
+    z-index: 1;
+    
+}
+
+header::after {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.705);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+
+.card{
+
+}
+
+.card:hover{
+    background-color: var(--color-grey-5);    
+}
