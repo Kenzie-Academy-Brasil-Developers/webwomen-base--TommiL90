@@ -1,8 +1,8 @@
 
 const listJobs  = document.getElementById("list-jobs")
 const listCards = document.getElementById("list-cards")
-const themeButtonText = ["Remover candidatura", "Candidatar"]
-let status
+// const themeButtonText = ["Remover candidatura", "Candidatar"]
+
 
 function jobsSelectsAnalysis (){
 
@@ -12,7 +12,9 @@ function jobsSelectsAnalysis (){
 
         const jobsLocal = JSON.parse(jobsLocalJSON)
 
-        return renderCards (jobsLocal)
+        jobsSelects.push(jobsLocal)
+        return renderCards (jobsSelects)
+        
     }
 }
 
@@ -66,20 +68,38 @@ function renderPosts(arr){
             const idButton = Number(event.target.id)
         
             // listCards.innerHTML = ""
-            
-            arr.forEach(e => {
+                    if(tagButton.innerText == "Candidatar"){
+                        
+                        tagButton.innerText = "Remover candidatura"
+                        jobsSelects.push(element)
+                        renderCards(jobsSelects)
+    
+                        const jobsJson = JSON.stringify(jobsSelects)
+                        localStorage.setItem("jobsSelects", jobsJson)
+                    }else{
+                        tagButton.innerText = "Candidatar"
+                        
+                        jobsSelects.splice(element.id, 1)
+                        renderCards(jobsSelects)
 
-                if (idButton == e.id){
+                        const jobsJson = JSON.stringify(jobsSelects)
+                        localStorage.setItem("jobsSelects", jobsJson)
+                    }
 
-                    jobsSelects.push(e)
-                    renderCards(jobsSelects)
+                    
+            // arr.forEach(e => {
 
-                    const jobsJson = JSON.stringify(jobsSelects)
+            //     if (idButton == e.id){
 
-                    localStorage.setItem("jobsSelects", jobsJson)
-                }
-                // themeChangeButtonText(tagButton)
-            })
+            //         jobsSelects.push(e)
+            //         renderCards(jobsSelects)
+
+            //         const jobsJson = JSON.stringify(jobsSelects)
+
+            //         localStorage.setItem("jobsSelects", jobsJson)
+            //     }
+            //     // themeChangeButtonText(tagButton)
+            // })
 
         })
 
@@ -92,13 +112,13 @@ function renderPosts(arr){
     });
 }
 
-function themeChangeButtonText(ButtonElement) {
+// function themeChangeButtonText(ButtonElement) {
 
     
-    status
-      ? (ButtonElement.innerText = themeButtonText[0])
-      : (ButtonElement.innerText = themeButtonText[1]);
-  }
+//     status
+//       ? (ButtonElement.innerText = themeButtonText[0])
+//       : (ButtonElement.innerText = themeButtonText[1]);
+//   }
 
 function renderCards(arr){
    
@@ -139,6 +159,10 @@ function renderCards(arr){
 
 
         tagButton.addEventListener("click", e => {
+            
+            const buttonPost = document.getElementById(`${element.id}`)
+
+            buttonPost.innerText = "Candidatar"
 
             jobsSelects.splice(index, 1)
             renderCards(jobsSelects)
