@@ -1,6 +1,20 @@
 
 const listJobs  = document.getElementById("list-jobs")
 const listCards = document.getElementById("list-cards")
+const themeButtonText = ["Remover candidatura", "Candidatar"]
+let status
+
+function jobsSelectsAnalysis (){
+
+    const jobsLocalJSON = localStorage.getItem("jobsSelects")
+   
+    if (jobsLocalJSON) {
+
+        const jobsLocal = JSON.parse(jobsLocalJSON)
+
+        return renderCards (jobsLocal)
+    }
+}
 
 function renderPosts(arr){
 
@@ -47,16 +61,24 @@ function renderPosts(arr){
         tagButton.addEventListener("click", event => {
             
             event.preventDefault()
+            // status = !status
+            // console.log(status)
             const idButton = Number(event.target.id)
         
             // listCards.innerHTML = ""
-
+            
             arr.forEach(e => {
 
                 if (idButton == e.id){
-                   
-                    renderCard(e)
+
+                    jobsSelects.push(e)
+                    renderCards(jobsSelects)
+
+                    const jobsJson = JSON.stringify(jobsSelects)
+
+                    localStorage.setItem("jobsSelects", jobsJson)
                 }
+                // themeChangeButtonText(tagButton)
             })
 
         })
@@ -65,14 +87,26 @@ function renderPosts(arr){
         tagDiv1.append(tagP1, tagP2)
         tagLi.append(tagH4, tagDiv1, tagP3, tagDiv2, )
 
-
+        
         listJobs.appendChild(tagLi)
     });
 }
 
-function renderCard(element){
+function themeChangeButtonText(ButtonElement) {
+
+    
+    status
+      ? (ButtonElement.innerText = themeButtonText[0])
+      : (ButtonElement.innerText = themeButtonText[1]);
+  }
+
+function renderCards(arr){
    
-     
+    listCards.innerHTML = ""
+
+    arr.forEach((element, index) => {
+
+        const id            = index
         const title         = element.title
         const enterprise    = element.enterprise
         const location      = element.location
@@ -97,34 +131,40 @@ function renderCard(element){
         tagP1.innerText     = enterprise
         tagP2.innerText     = location
 
+        tagButton.id        = id
+
         tagDiv2.append(tagP1, tagP2)
         tagDiv1.append(tagH5, tagButton)
         tagLi.append(tagDiv1, tagDiv2)
 
+
         tagButton.addEventListener("click", e => {
 
-            let button = e.target
+            jobsSelects.splice(index, 1)
+            renderCards(jobsSelects)
 
-            if (button.tagName == "BUTTON") {
-            let li = button.closest("li");
-        
-            li.remove();
-           
-          }
+            const jobsJson = JSON.stringify(jobsSelects)
+
+            localStorage.setItem("jobsSelects", jobsJson)
         })
 
         listCards.append(tagLi)
+
+    }) 
+
+        
 }
 
+jobsSelectsAnalysis ()
 renderPosts(jobsData)
 
-{/* <li class="card w-full flex flex-col gap bg-white p-2 rounded-sm">
-<div class="flex justify-between">
-  <h5 class="title-5 w-80">Pessoa desenvolvedora front-end - React JS</h5>
-  <button class="trash w-20"></button>
-</div>
-<div class="flex justify-start gap-2">
-  <p class="text-3 text-grey-2">Kenzie Academy</p>
-  <p class="text-3 text-grey-2">Curitiba</p>
-</div>
-</li> */}
+/**
+   if (status){
+                        // themeChangeButtonText(tagButton)
+                        renderCards(e)
+                    }
+                        // themeChangeButtonText(tagButton)
+                        renderCards(e)
+ */
+
+            
