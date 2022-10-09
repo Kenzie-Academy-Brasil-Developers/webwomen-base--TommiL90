@@ -7,12 +7,12 @@ const listCards = document.getElementById("list-cards")
 function jobsSelectsAnalysis (){
 
     const jobsLocalJSON = localStorage.getItem("jobsSelects")
-   
-    if (jobsLocalJSON) {
+    const jobsLocal = JSON.parse(jobsLocalJSON)
+    
+    console.log(...jobsLocal)
+    if (jobsLocal.length !== 0) {
 
-        const jobsLocal = JSON.parse(jobsLocalJSON)
-
-        jobsSelects.push(jobsLocal)
+        jobsSelects.push(...jobsLocal)
         return renderCards (jobsSelects)
         
     }
@@ -63,11 +63,10 @@ function renderPosts(arr){
         tagButton.addEventListener("click", event => {
             
             event.preventDefault()
-            // status = !status
-            // console.log(status)
+           
             const idButton = Number(event.target.id)
         
-            // listCards.innerHTML = ""
+          
                     if(tagButton.innerText == "Candidatar"){
                         
                         tagButton.innerText = "Remover candidatura"
@@ -79,27 +78,14 @@ function renderPosts(arr){
                     }else{
                         tagButton.innerText = "Candidatar"
                         
-                        jobsSelects.splice(element.id, 1)
+                        let indexOfJobSelects = jobsSelects.findIndex(e => e.id == index)
+
+                        jobsSelects.splice(indexOfJobSelects, 1)
                         renderCards(jobsSelects)
 
                         const jobsJson = JSON.stringify(jobsSelects)
                         localStorage.setItem("jobsSelects", jobsJson)
                     }
-
-                    
-            // arr.forEach(e => {
-
-            //     if (idButton == e.id){
-
-            //         jobsSelects.push(e)
-            //         renderCards(jobsSelects)
-
-            //         const jobsJson = JSON.stringify(jobsSelects)
-
-            //         localStorage.setItem("jobsSelects", jobsJson)
-            //     }
-            //     // themeChangeButtonText(tagButton)
-            // })
 
         })
 
@@ -179,8 +165,9 @@ function renderCards(arr){
         
 }
 
-jobsSelectsAnalysis ()
+
 renderPosts(jobsData)
+jobsSelectsAnalysis ()
 
 /**
    if (status){
